@@ -24,6 +24,26 @@
                      </a>
                  </li>
              {{/each}}
+             {{#if theme_settings.brands-item}}
+             <li class="navPages-item navPages-item-page brands-item">
+                <a class="navPages-action{{#if name '==' ../page.title}} {{/if}}"
+                   href="/{{theme_settings.brands-item_url}}"
+                   aria-label="Brands"
+                >
+                    {{theme_settings.brands-item_name}}
+                    
+                </a>
+                <span class="icon brands-icon-open">
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-down"></use>
+                    </svg>
+                </span>
+                {{#if theme_settings.brands_sub-menu}}
+                <div id='alphabet-brands'>
+                </div>
+                {{/if}}
+            </li>
+            {{/if}}
         {{/unless}}
     </ul>
     <ul class="navPages-list navPages-list--user">

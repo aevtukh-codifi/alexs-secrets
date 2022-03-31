@@ -520,6 +520,35 @@
     ]
   },
   {
+    "name":"Brands configuration",
+    "settings":[
+      {
+        "type": "checkbox",
+        "label": "ShowHideBrandItem",
+        "force_reload": true,
+        "id": "brands-item"
+      },
+      {
+        "type": "text",
+        "label": "BrandsItemName",
+        "force_reload": true,
+        "id": "brands-item_name"
+      },
+      {
+        "type": "text",
+        "label": "BrandsItemURL",
+        "force_reload": true,
+        "id": "brands-item_url"
+      },
+      {
+        "type": "checkbox",
+        "label": "ShowHideBrandsSubMenu",
+        "force_reload": true,
+        "id": "brands_sub-menu"
+      }
+    ]
+  },
+  {
     "name": "i18n.HeaderAndFooter",
     "settings": [
       {

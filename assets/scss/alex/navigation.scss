@@ -1,0 +1,55 @@
+.brands-item {
+    @media (max-width:800px) {
+        position: relative;
+    } 
+    #alphabet-brands {
+        visibility: hidden;
+        ul{
+            position: absolute;
+            width: 100vw;
+            bottom: -50px;
+            font-size: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            left: 0;
+            padding:15px 20px;
+            background: #ffffff;
+            @media (max-width:800px) {
+                position: relative;
+                bottom: 0;
+                display: none;
+                &.open{
+                    visibility: visible;
+                    display: flex;
+                    margin: 0;
+                    padding: 5px;
+                    width: 100%;
+                }
+            }
+            li{
+                padding: 0 10px;
+                a{
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+    &:hover > #alphabet-brands {
+        visibility: visible;
+    }
+    .brands-icon-open{
+        display: none;
+        position: absolute;
+        right: 10px;
+        &.open{
+            transform: rotate(180deg);
+        }
+        @media (max-width: 800px) {
+            display: block;
+            top: 15px;
+        }
+
+    }
+}

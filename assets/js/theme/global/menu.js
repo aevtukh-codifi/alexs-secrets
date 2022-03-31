@@ -1,5 +1,19 @@
 import collapsibleFactory from '../common/collapsible';
 import collapsibleGroupFactory from '../common/collapsible-group';
+import React from 'react'
+import * as ReactDOMClient from 'react-dom/client';
+
+let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+const AlphabetItems = () => (
+    <ul className='brands-items__list'>
+      {alphabet.map((item, index) =>
+        <li key={index}>
+          <a href={`/brands/?starting=${item}`}>{item}</a>
+        </li>
+      )}
+    </ul>
+)
 
 const PLUGIN_KEY = 'menu';
 
@@ -23,6 +37,13 @@ class Menu {
 
         // Listen
         this.bindEvents();
+        this.onReady();
+    }
+
+    onReady() {
+        const container = document.getElementById('alphabet-brands');
+        const root = ReactDOMClient.createRoot(container);
+        root.render(<AlphabetItems />);
     }
 
     collapseAll() {
@@ -81,3 +102,12 @@ export default function menuFactory(selector = `[data-${PLUGIN_KEY}]`) {
 
     return menu;
 }
+
+$(document).ready(function() {    
+    var openArrow = $('.brands-icon-open');
+    openArrow.click(() => {
+        openArrow.toggleClass('open');
+        var menu = document.querySelector('.brands-items__list');
+        menu.classList.toggle('open')
+    });   
+}); 
