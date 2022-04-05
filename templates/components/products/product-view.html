@@ -96,9 +96,23 @@
         <div class="productView-product">
             <h1 class="productView-title">{{product.title}}</h1>
             {{#if product.brand}}
-                <h2 class="productView-brand">
-                    <a href="{{product.brand.url}}"><span>{{product.brand.name}}</span></a>
-                </h2>
+            <div id = "brand-info">
+                <div class="brannd-info__wrapper">
+                    <div id="brand-img" class="brand-img">
+
+                    </div>
+                    <div class="brand-info-text">
+                        <div class="brand-name">
+                            <h2 class="productView-brand">
+                                <a href="{{product.brand.url}}"><span>{{product.brand.name}}</span></a>
+                            </h2>
+                        </div>
+                        <div id="brand-description" class="brand-description">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
             {{/if}}
             {{#if product.call_for_price}}
                 <p class="productView-price">
