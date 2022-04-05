@@ -103,13 +103,14 @@ export default class Product extends PageManager {
             const brandInfo = serverData.filter(item => item?.node?.name == productBrand);
             
             var brandImg = document.createElement('img');
-            brandImg.setAttribute('src', `${brandInfo[0]?.node?.defaultImage?.urlOriginal}`);
+            var brandImgSrc = brandInfo[0]?.node?.defaultImage?.urlOriginal || 'https://via.placeholder.com/150';
+            brandImg.setAttribute('src', brandImgSrc);
             brandImg.setAttribute('alt',`${brandInfo[0]?.node?.defaultImage?.altText}`);
             var imgContainer = document.getElementById('brand-img');
             imgContainer.append(brandImg);
-            
+
             var brandDescription = document.createElement('p');
-            brandDescription.innerHTML = `${brandInfo[0]?.node?.seo?.metaDescription}`;
+            brandDescription.innerHTML = `${brandInfo[0]?.node?.seo?.metaDescription}` || 'There is no description';
             var brandContainer = document.getElementById('brand-description');
             brandContainer.append(brandDescription);
         });
