@@ -390,7 +390,12 @@
         ]
       },
       "images": {},
-      "settings": {}
+      "settings": {
+        "brands-item":true,
+        "brands-item_name":"brands",
+        "brands-item_url":"brands",
+        "brands_sub-menu":true
+      }
     },
     {
       "name": "Bold",

@@ -33,6 +33,7 @@ module.exports = {
                                 useBuiltIns: 'entry',
                                 corejs: '^3.6.5',
                             }],
+                            ['@babel/preset-react'],
                         ],
                     },
                 },
