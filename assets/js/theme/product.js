@@ -59,6 +59,61 @@ export default class Product extends PageManager {
         });
 
         this.productReviewHandler();
+        this.createBrandInfo ();
+    }
+    
+    createBrandInfo () {
+        var productBrand = this.context.productBrand
+        var token = this.context.token;
+        var serverData = ''
+
+        fetch('/graphql', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                query: `
+                query MyFirstQuery {
+                site {
+                        brands {
+                            edges {
+                                node {
+                                    name,
+                                    defaultImage {
+                                        urlOriginal,
+                                        altText
+                                    }
+                                    seo {
+                                        metaDescription 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                `
+            }),
+        })
+        .then(res => res.json())
+        .then(json => { 
+            serverData = json?.data?.site?.brands?.edges;
+            const brandInfo = serverData.filter(item => item?.node?.name == productBrand);
+            
+            var brandImg = document.createElement('img');
+            var brandImgSrc = brandInfo[0]?.node?.defaultImage?.urlOriginal || 'https://via.placeholder.com/150';
+            brandImg.setAttribute('src', brandImgSrc);
+            brandImg.setAttribute('alt',`${brandInfo[0]?.node?.defaultImage?.altText}`);
+            var imgContainer = document.getElementById('brand-img');
+            imgContainer.append(brandImg);
+
+            var brandDescription = document.createElement('p');
+            brandDescription.innerHTML = `${brandInfo[0]?.node?.seo?.metaDescription}` || 'There is no description';
+            var brandContainer = document.getElementById('brand-description');
+            brandContainer.append(brandDescription);
+        });
     }
 
     ariaDescribeReviewInputs($form) {

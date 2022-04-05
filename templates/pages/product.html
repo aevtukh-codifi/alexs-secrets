@@ -11,6 +11,9 @@ product:
 ---
 {{inject 'productId' product.id}}
 
+{{inject 'productBrand' product.brand.name}}
+{{inject 'token' settings.storefront_api.token}}
+
 {{#partial "page"}}
 
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
