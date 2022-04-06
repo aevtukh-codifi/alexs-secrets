@@ -18,7 +18,7 @@ export default class Brands extends CatalogPage {
     }
 
     clearBrandsContainer () {
-        this.brandsContainer.innerHTML = `<p style='font-size: 20px; text-align: center'>Loading...</p>`;
+        this.brandsContainer.innerHTML = `<div class='my-loader' style="display:flex; justify-content: center; aligh-items: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"></div>`;
         this.getBrandsInfo()
     }
 
@@ -63,10 +63,10 @@ export default class Brands extends CatalogPage {
             const filterServerData = serverData.filter((el) => el.node.name[0].toLowerCase() == filterParametr);
             if (filterServerData.length) {
                 this.brandsContainer.innerHTML =''
+                this.brandsContainer.classList.add('flex')
                 for (let el = 0; el < filterServerData.length; el++) {
                     var li = document.createElement('li');
                     li.setAttribute('class', 'filtered-brand__item')
-                    li.setAttribute('style', 'padding: 20px;')
                     li.innerHTML = `<div class='brand-img__container'>
                                         <a href='/${filterServerData[el]?.node?.name}'><img src='${filterServerData[el]?.node?.defaultImage?.urlOriginal}' alt='${filterServerData[el]?.node?.name}'/></a>
                                     </div>
