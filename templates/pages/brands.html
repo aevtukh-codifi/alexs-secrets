@@ -9,7 +9,7 @@ brands:
 <section class="page">
     <h1 class="page-heading">{{lang 'brand.label'}}</h1>
     {{{region name="brands_below_header"}}}
-    <ul class="brandGrid">
+    <ul id="brands-filter" class="brandGrid">
         {{#each brands}}
             <li class="brand">
                 <article class="card {{#if alternate}}card--alternate{{/if}}">
