@@ -14,7 +14,7 @@ export default class Brands extends CatalogPage {
     }
 
     checkURL() {
-        this.currentUrl.includes('brands/?starting') ? this.clearBrandsContainer() : null;
+        this.currentUrl.includes('brands/?starting') ? this.clearBrandsContainer() : $('.brand').toggleClass('hidden')
     }
 
     clearBrandsContainer () {

@@ -19,6 +19,11 @@
         }
     }
 }
+#brands-filter {
+    li.hidden{
+        visibility: hidden;
+    }
+}
 
 #brands-filter.flex {
     display: flex;
