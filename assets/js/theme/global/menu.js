@@ -42,24 +42,11 @@ class Menu {
 
     onReady() {
         const container = document.getElementById('alphabet-brands');
-        const root = ReactDOMClient.createRoot(container);
-        root.render(<AlphabetItems />);
-
-        // setTimeout(this.changeActionOnClick, 1000);
+        if (container) {
+            const root = ReactDOMClient.createRoot(container);
+            root.render(<AlphabetItems />);
+        }
     }
-
-    // changeActionOnClick () {
-    //     var brandsItems = document.querySelectorAll('.brand-item__link');
-    //     setTimeout(() => {
-    //         brandsItems.forEach((item) => {
-    //             item.addEventListener('click', (e) => {
-    //                 e.preventDefault();
-    //                 // window.location.href = `${item.getAttribute('href')}`
-                    
-    //             })
-    //         })
-    //     }, 1000)
-    // }
     
     collapseAll() {
         this.collapsibles.forEach(collapsible => collapsible.close());

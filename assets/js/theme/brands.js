@@ -63,16 +63,18 @@ export default class Brands extends CatalogPage {
             const filterServerData = serverData.filter((el) => el.node.name[0].toLowerCase() == filterParametr);
             if (filterServerData.length) {
                 this.brandsContainer.innerHTML =''
-                this.brandsContainer.classList.add('flex')
+                this.brandsContainer.classList.add('flex');
                 for (let el = 0; el < filterServerData.length; el++) {
+                    var mainBrandImgSrc = filterServerData[el]?.node?.defaultImage?.urlOriginal || 'https://via.placeholder.com/150' ;
+                    var brandDescription = filterServerData[el]?.node?.seo?.metaDescription || 'There is no description';
                     var li = document.createElement('li');
                     li.setAttribute('class', 'filtered-brand__item')
                     li.innerHTML = `<div class='brand-img__container'>
-                                        <a href='/${filterServerData[el]?.node?.name}'><img src='${filterServerData[el]?.node?.defaultImage?.urlOriginal}' alt='${filterServerData[el]?.node?.name}'/></a>
+                                        <a href='/brands/${filterServerData[el]?.node?.name.toLowerCase()}/'><img src='${mainBrandImgSrc}' alt='${filterServerData[el]?.node?.name}'/></a>
                                     </div>
                                     <div class="brand-info__container">
-                                        <h3 class="brand-name"><a href='/${filterServerData[el]?.node?.name}'>${filterServerData[el]?.node?.name}</a></h3>
-                                        <p class="brand-description" style='font-size:20px'>${filterServerData[el]?.node?.seo?.metaDescription}</p>
+                                        <h3 class="brand-name"><a href='/brands/${filterServerData[el]?.node?.name.toLowerCase()}'>${filterServerData[el]?.node?.name}</a></h3>
+                                        <p class="brand-description" style='font-size:20px'>${brandDescription}</p>
                                     </div>`;
                     this.brandsContainer.append(li);
                   }
